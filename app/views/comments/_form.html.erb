@@ -1,0 +1,32 @@
+<%= form_with(model: comment, local: true) do |form| %>
+  <%= form.hidden_field :idea_id %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+  <div class="from-group">
+    <%= form.label :user_name, class: "col-sm-2 control-label" %>
+    <%= form.text_field :user_name, class: "form-control col-sm-4" %>
+  </div>
+
+  <div class="from-group">
+    <%= form.label :body, class: "col-sm-2 control-label" %>
+    <%= form.text_field :body, class: "form-control col-sm-4" %>
+  </div>
+  <div class="from-group">
+    <%= form.label :picture, class: "col-sm-2 control-label" %><br>
+    <%= form.file_field :picture, class: "form-control"%>
+ </div>
+
+  <div class="from-group">
+    <%= form.submit %>
+  </div>
+<% end %>
